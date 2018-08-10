@@ -31,29 +31,29 @@
 
   <div class="form-group">
     <label for="name">Longitude</label>
-    <%= form.text_field :longitude, class: 'form-control', id: 'longitude_input', hidden: true %>
+    <%= form.text_field :longitude, class: 'form-control', id: 'longitude_input', disabled: true, required: true%>
   </div>
 
 
   <div class="form-group">
     <label for="name">Latitude</label>
-    <%= form.text_field :latitude, class: 'form-control', id: 'latitude_input', hidden: true %>
+    <%= form.text_field :latitude, class: 'form-control', id: 'latitude_input',disabled: true, required:true %>
   </div>
 
 
   <div class="form-group">
     <label for="name">Start Date</label>
-    <%= form.text_field :start_date, class: 'form-control', "data-provide" => 'datepicker' %>
+    <%= form.datetime_field :start_date, class: 'form-control', required: true %>
   </div>
 
   <div class="form-group">
     <label for="name">End Date</label>
-    <%= form.text_field :end_date, class: 'form-control', "data-provide" => 'datepicker' %>
+    <%= form.datetime_field :end_date, class: 'form-control', required: true %>
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Event Description</label>
-    <%= form.text_area :description, class: 'form-control', "data-provide" => 'datepicker', rows: '3' %>
+    <%= form.text_area :description, class: 'form-control', rows: '3' %>
   </div>
 
 
