@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'event/resources'
+
   get 'home/index'
   root to: 'home#index'
 
