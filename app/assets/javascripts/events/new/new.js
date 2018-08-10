@@ -2,15 +2,32 @@ $(function () {
     if($('#map').length < 0)
         return;
 
-    handler = Gmaps.build('Google');
+    drawGoogleMap();
+});
 
-    handler.buildMap({ provider: { zoom:15}, internal: {id: 'map'}}, function(){
-        handler.fitMapToBounds();
-        if(navigator.geolocation)
-            navigator.geolocation.getCurrentPosition(displayOnMap);
+
+function drawGoogleMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 17
     });
 
+    var marker;
+
+    if(navigator.geolocation)
+        navigator.geolocation.getCurrentPosition(displayOnMap);
+
     function displayOnMap(position) {
-        handler.map.centerOn(new google.maps.LatLng(position.coords.latitude, position.coords.longitude) );
+        var position =  new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: 'Event Location'
+        });
+        map.setCenter(position);
     }
-});
+
+    map.addListener('click', function(event) {
+        var position = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng())
+        marker.setPosition(position);
+    });
+}
