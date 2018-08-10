@@ -32,12 +32,12 @@ $(function () {
             map.setCenter(position);
 
         }
-
-        map.addListener('click', function (event) {
-            var position = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
-            marker.setPosition(position);
-            setFormLocation(event.latLng.lat(), event.latLng.lng());
-        });
+        if(jqMapElement.data('can-set-location'))
+            map.addListener('click', function (event) {
+                var position = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
+                marker.setPosition(position);
+                setFormLocation(event.latLng.lat(), event.latLng.lng());
+            });
     }
 
     function setFormLocation(lat, lng) {
