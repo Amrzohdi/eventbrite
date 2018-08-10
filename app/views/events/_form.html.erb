@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <%= form.text_field :name, class: 'form-control', required: true%>
+  <%= form.text_field :longitude, class: 'form-control', id: 'longitude_input',hidden: true%>
+  <%= form.text_field :latitude, class: 'form-control', id: 'latitude_input', hidden: true%>
+  <%= form.text_field :start_date, class: 'form-control',  "data-provide" => 'datepicker'%>
+  <%= form.text_field :end_date, class: 'form-control',  "data-provide" => 'datepicker'%>
+
 
   <div style='width: 800px;'>
     <div id="map" style='width: 800px; height: 400px;'></div>
