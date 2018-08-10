@@ -1,6 +1,16 @@
-<h1>Editing Event</h1>
 
-<%= render 'form', event: @event %>
+<div class="jumbotron">
+  <div class="container">
+    <h2><%=@event.name%></h2>
+  </div>
+</div>
+
+<div>
+  <div class="container">
+    <%= render 'form', event: @event %>
+  </div>
+</div>
+
 
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', events_path %>

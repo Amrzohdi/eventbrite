@@ -1,5 +1,10 @@
 <div style='width: 100%'>
-  <div id="map" style=' height: 400px;'></div>
+  <div class="map"
+       data-new-event="<%=@event.id.nil?%>"
+       data-longitude="<%=@event.longitude%>"
+       data-latitude="<%=@event.latitude%>"
+       data-can-set-location="true"
+       style=' height: 400px;'></div>
 </div>
 
 
