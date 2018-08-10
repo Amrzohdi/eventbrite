@@ -1,5 +1,5 @@
 $(function () {
-    if ($('.map').length < 0)
+    if ($('.map').length == 0)
         return;
 
     $('.map').each(function (_, el) {
