@@ -37,7 +37,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params.merge(user: current_user))
     respond_to do |format|
       if @event.save
-        format.json {render :show, status: :created, location: @event}
+        format.html {redirect_to @event}
       else
         format.html {render :new}
         format.json {render json: @event.errors, status: :unprocessable_entity}
