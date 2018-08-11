@@ -17,8 +17,8 @@
 
     <div style='width: 100%'>
       <div class="map"
-           data-longitude="<%= @event.longitude %>"
-           data-latitude="<%= @event.latitude %>"
+           data-longitude="<%= @event.vanue.longitude %>"
+           data-latitude="<%= @event.vanue.latitude %>"
            data-can-set-location="false"
            data-estimate-cost-url="<%=estimate_cost_event_path(@event.id)%>"
            style=' height: 400px;'></div>

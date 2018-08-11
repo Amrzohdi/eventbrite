@@ -35,7 +35,6 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params.merge(user: current_user))
-
     respond_to do |format|
       if @event.save
         format.json {render :show, status: :created, location: @event}
@@ -78,7 +77,10 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:name, :longitude, :latitude, :start_date, :end_date, :description, :price)
+    params.require(:event).permit(:name, :start_date, :end_date, :description, :price).merge(vanue_attributes: vanue_params)
   end
 
+  def vanue_params
+    params.require(:vanue).permit(:name, :longitude, :latitude)
+  end
 end
