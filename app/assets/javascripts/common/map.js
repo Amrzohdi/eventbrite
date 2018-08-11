@@ -59,6 +59,8 @@ $(function () {
             }
         }).then(function (response) {
             $('#uber-estimate-cost')[0].innerHTML = response.prices[1]['estimate'];
+        }, function (reason) {
+            $('#uber-estimate-cost')[0].innerHTML = reason.responseText;
         });
     }
 });

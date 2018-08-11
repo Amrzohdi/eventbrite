@@ -24,7 +24,11 @@ class EventsController < ApplicationController
   end
 
   def estimate_cost
-    render json: uber_estimate_cost
+    begin
+      render json: uber_estimate_cost
+    rescue RestClient::Exception => err
+      render json: JSON.parse(err.response)['message'], status: 400
+    end
   end
 
   # POST /events
