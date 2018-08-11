@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :estimate_cost]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new]
+
   include UberConcern
 
   # GET /events
