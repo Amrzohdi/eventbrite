@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :estimate_cost]
   before_action :authenticate_user!
+  include UberConcern
 
   # GET /events
   # GET /events.json
@@ -22,6 +23,10 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def estimate_cost
+    render json: uber_estimate_cost
+  end
+
   # POST /events
   # POST /events.json
   def create
@@ -29,7 +34,6 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html {redirect_to @event, notice: 'Event was successfully created.'}
         format.json {render :show, status: :created, location: @event}
       else
         format.html {render :new}

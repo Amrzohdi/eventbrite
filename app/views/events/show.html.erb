@@ -20,6 +20,7 @@
            data-longitude="<%= @event.longitude %>"
            data-latitude="<%= @event.latitude %>"
            data-can-set-location="false"
+           data-estimate-cost-url="<%=estimate_cost_event_path(@event.id)%>"
            style=' height: 400px;'></div>
     </div>
 
@@ -51,8 +52,8 @@
 
       <div class="col-md-3 col-sm-3 col-xs-6">
         <div class="number">
-          <h3><span><%=@event.price%>$</span></h3>
-          <p>Uber Price</p>
+          <h3 style="min-height: 24px;"><span id="uber-estimate-cost"></span></h3>
+          <p>Uber Estimate Cost</p>
         </div>
       </div>
 
