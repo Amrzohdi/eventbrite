@@ -3,7 +3,10 @@
 <div class="jumbotron">
   <div class="container">
     <h2>Events</h2>
-    <%= link_to 'New Event', new_event_path %>
+    <% if user_signed_in? %>
+      <%= link_to 'New Event', new_event_path %>
+    <% end %>
+
 
   </div>
 </div>
@@ -23,15 +26,17 @@
                  style=' height: 250px;'></div>
           </div>
           <div class="card-body">
-            <h4 class="card-title"><%=event.name%></h4>
-            <p class="card-text"><%=event.description%></p>
+            <h4 class="card-title"><%= event.name %></h4>
+            <p class="card-text"><%= event.description %></p>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-primary' %>
+              <%= link_to 'Destroy', event, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary' %>
+            <% end %>
             <%= link_to 'Show', event, class: 'btn btn-primary' %>
-            <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-primary' %>
-            <%= link_to 'Destroy', event, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary' %>
           </div>
         </div>
       </div>
-  <% end %>
+    <% end %>
 
 
   </div>
