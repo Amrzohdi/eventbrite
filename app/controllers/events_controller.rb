@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def estimate_cost
     begin
-      render json: uber_estimate_cost
+      render json: uber_estimate_cost(params['st_lat'], params['st_lng'])
     rescue RestClient::Exception => err
       render json: JSON.parse(err.response)['message'], status: 400
     end
