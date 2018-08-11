@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  describe 'vanue validation' do
-    it { should validate_presence_of(:vanue) }
+  describe 'venue validation' do
+    it { should validate_presence_of(:venue) }
   end
 
   describe 'start_date validation' do

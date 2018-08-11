@@ -1,8 +1,8 @@
 <div style='width: 100%'>
   <div class="map"
        data-new-event="<%= @event.id.nil? %>"
-       data-longitude="<%= @event.vanue.try(:longitude) %>"
-       data-latitude="<%= @event.vanue.try(:latitude) %>"
+       data-longitude="<%= @event.venue.try(:longitude) %>"
+       data-latitude="<%= @event.venue.try(:latitude) %>"
        data-can-set-location="true"
        style=' height: 400px;'></div>
 </div>
@@ -35,20 +35,20 @@
   </div>
 
 
-  <%= fields_for :vanue, @event.vanue do |vanue_fields| %>
+  <%= fields_for :venue, @event.venue do |venue_fields| %>
     <div class="form-group">
       <label for="name">Longitude</label>
-      <%= vanue_fields.text_field :longitude, class: 'form-control', id: 'longitude_input', readonly: true, required: true %>
+      <%= venue_fields.text_field :longitude, class: 'form-control', id: 'longitude_input', readonly: true, required: true %>
     </div>
 
     <div class="form-group">
       <label for="name">Latitude</label>
-      <%= vanue_fields.text_field :latitude, class: 'form-control', id: 'latitude_input', readonly: true, required: true %>
+      <%= venue_fields.text_field :latitude, class: 'form-control', id: 'latitude_input', readonly: true, required: true %>
     </div>
 
     <div class="form-group">
-      <label for="name">Vanue Name</label>
-      <%= vanue_fields.text_field :name, class: 'form-control' %>
+      <label for="name">Venue Name</label>
+      <%= venue_fields.text_field :name, class: 'form-control' %>
     </div>
 
   <% end %>

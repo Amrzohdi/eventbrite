@@ -78,10 +78,10 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:name, :start_date, :end_date, :description, :price).merge(vanue_attributes: vanue_params)
+    params.require(:event).permit(:name, :start_date, :end_date, :description, :price).merge(venue_attributes: venue_params)
   end
 
-  def vanue_params
-    params.require(:vanue).permit(:name, :longitude, :latitude)
+  def venue_params
+    params.require(:venue).permit(:name, :longitude, :latitude)
   end
 end

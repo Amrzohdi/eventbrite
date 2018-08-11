@@ -44,16 +44,16 @@ ActiveRecord::Schema.define(version: 20180811085911) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "vanues", force: :cascade do |t|
+  create_table "venues", force: :cascade do |t|
     t.string "name"
     t.string "longitude"
     t.string "latitude"
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_vanues_on_event_id"
+    t.index ["event_id"], name: "index_venues_on_event_id"
   end
 
   add_foreign_key "events", "users"
-  add_foreign_key "vanues", "events"
+  add_foreign_key "venues", "events"
 end
