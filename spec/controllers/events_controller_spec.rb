@@ -32,9 +32,22 @@ RSpec.describe EventsController, type: :controller do
       expect_any_instance_of(UberConcern).to receive(:uber_estimate_cost).with('30.013606499999995', '31.1944935').and_return({})
       get :estimate_cost, params: {id: event.id, st_lat: '30.013606499999995', st_lng: '31.1944935'}
     end
-
-
   end
 
+  describe "create event" do
+    it "should events count be increased by 1" do
+      sign_in FactoryBot.create(:user)
+      event_params = FactoryBot.attributes_for(:event)
+      venue_params = FactoryBot.attributes_for(:venue)
+      expect { post :create, params: {event: event_params, venue: venue_params} }.to change(Event, :count).by(1)
+    end
+
+    it "event will not be saved" do
+      sign_in FactoryBot.create(:user)
+      event_params = FactoryBot.attributes_for(:event)
+      expect { post :create, params: {event: event_params, venue: {start_date: ""}} }.to change(Event, :count).by(0)
+    end
+
+  end
 
 end
