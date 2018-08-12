@@ -26,3 +26,9 @@ p {
     margin-bottom: 0px;
     color: #dd0a37;
 }
+
+
+.card-text {
+    max-height: 110px;
+    overflow: hidden;
+}
