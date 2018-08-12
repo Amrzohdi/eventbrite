@@ -1,24 +1,25 @@
-# README
+# this is an event application management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+do the following commands to run the application server:
 
-* Ruby version
 
-* System dependencies
+1 - `git clone git@github.com:Amrzohdi/eventbrite.git`
 
-* Configuration
+2 - `cd eventbrite`
 
-* Database creation
+3 - `bundle install`
 
-* Database initialization
+    you should have postgres installed and have eventbrite role with CREATEDB LOGIN    
 
-* How to run the test suite
+4 - `rake db:create db:migrate db:seed`
 
-* Services (job queues, cache servers, search engines, etc.)
+5 - `rails s`
 
-* Deployment instructions
+finally go to [localhost:3000](http://localhost:3000).
 
-* ...
+
+a user should be created by seeds with: 
+        
+        email: example@gmail.com
+        password: asdasd123
