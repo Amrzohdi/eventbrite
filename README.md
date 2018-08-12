@@ -28,5 +28,5 @@ to run the tests:
   
     rspec spec
 
-**you can access coverage after running the tests by opening
+**you can access the coverage after running the tests by opening
 /coverage/index.html using the browser** 
