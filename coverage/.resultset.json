@@ -45,6 +45,15 @@
         null,
         null
       ],
+      "/Users/amr/RubymineProjects/eventbrite/app/controllers/concerns/uber_concern.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/amr/RubymineProjects/eventbrite/app/controllers/events_controller.rb": [
         1,
         1,
@@ -139,15 +148,6 @@
         1,
         null
       ],
-      "/Users/amr/RubymineProjects/eventbrite/app/controllers/concerns/uber_concern.rb": [
-        1,
-        1,
-        0,
-        0,
-        0,
-        null,
-        null
-      ],
       "/Users/amr/RubymineProjects/eventbrite/app/models/event.rb": [
         1,
         1,
@@ -163,6 +163,6 @@
         null
       ]
     },
-    "timestamp": 1534102618
+    "timestamp": 1534104242
   }
 }

@@ -29,7 +29,8 @@ RSpec.describe EventsController, type: :controller do
     it "should call uber_estimate_cost with the given lng and lat" do
       sign_in
       event = FactoryBot.create(:event)
-      expect_any_instance_of(UberConcern).to receive(:uber_estimate_cost).with('30.013', '31.1944')
+      expect_any_instance_of(UberConcern).to receive(:uber_estimate_cost).with('30.013', '31.1944',
+                                                                               event.venue.latitude, event.venue.longitude)
       get :estimate_cost, params: {id: event.id, st_lat: '30.013', st_lng: '31.1944'}
     end
 

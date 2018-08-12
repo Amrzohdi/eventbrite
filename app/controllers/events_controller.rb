@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def estimate_cost
     begin
-      render json: uber_estimate_cost(params['st_lat'], params['st_lng'])
+      render json: uber_estimate_cost(params['st_lat'], params['st_lng'], @event.venue.latitude, @event.venue.longitude)
     rescue RestClient::Exception => err
       render json: JSON.parse(err.response)['message'], status: :unprocessable_entity
     end
