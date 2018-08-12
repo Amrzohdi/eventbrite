@@ -50,4 +50,12 @@ RSpec.describe EventsController, type: :controller do
 
   end
 
+  describe "destroy event" do
+    it "event should be destroyed" do
+      sign_in user=FactoryBot.create(:user)
+      event = FactoryBot.create(:event, user: user)
+      expect { delete :destroy, params: {id: event.id} }.to change(Event, :count).by(-1)
+    end
+  end
+
 end

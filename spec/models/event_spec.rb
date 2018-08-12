@@ -1,15 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  describe 'venue validation' do
-    it { should validate_presence_of(:venue) }
-  end
 
-  describe 'start_date validation' do
-    it { should validate_presence_of(:start_date) }
-  end
+  it {should belong_to(:user)}
+  it {should have_one(:venue).dependent(:destroy)}
+  it {should validate_presence_of(:venue)}
+  it {should validate_presence_of(:start_date)}
+  it {should validate_presence_of(:end_date)}
 
-  describe 'end_date validation' do
-    it { should validate_presence_of(:end_date) }
-  end
 end
