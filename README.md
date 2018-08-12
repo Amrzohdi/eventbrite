@@ -10,7 +10,7 @@ do the following commands to run the application server:
 
 3 - `bundle install`
 
-    you should have postgres installed and have eventbrite role with CREATEDB LOGIN    
+    you should have postgres installed and have eventbrite role with CREATEDB LOGIN and password eventbrite  
 
 4 - `rake db:create db:migrate db:seed`
 
