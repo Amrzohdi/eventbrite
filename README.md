@@ -23,3 +23,10 @@ a user should be created by seeds with:
         
         email: example@gmail.com
         password: asdasd123
+        
+to run the tests:
+  
+    rspec spec
+
+**you can access coverage after running the tests by opening
+/coverage/index.html using the browser** 
