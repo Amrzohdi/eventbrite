@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     begin
       render json: uber_estimate_cost(params['st_lat'], params['st_lng'])
     rescue RestClient::Exception => err
-      render json: JSON.parse(err.response)['message'], status: 400
+      render json: JSON.parse(err.response)['message'], status: :unprocessable_entity
     end
   end
 
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
         format.html {redirect_to @event, notice: 'Event was successfully updated.'}
         format.json {render :show, status: :ok, location: @event}
       else
-        format.html {render :edit}
+        format.html {render :edit, status: :unprocessable_entity}
         format.json {render json: @event.errors, status: :unprocessable_entity}
       end
     end
@@ -82,6 +82,6 @@ class EventsController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :longitude, :latitude)
+    params.require(:venue).permit(:id, :name, :longitude, :latitude)
   end
 end

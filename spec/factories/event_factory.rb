@@ -3,7 +3,7 @@ FactoryBot.define do
     name 'event name'
     association :venue
     association :user
-    start_date {DateTime.now}
+    start_date {DateTime.now.yesterday }
     end_date {DateTime.now}
   end
 end

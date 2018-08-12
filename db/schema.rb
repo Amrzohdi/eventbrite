@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20180811085911) do
 
   create_table "venues", force: :cascade do |t|
     t.string "name"
-    t.string "longitude"
-    t.string "latitude"
+    t.decimal "latitude", precision: 10, scale: 7
+    t.decimal "longitude", precision: 10, scale: 7
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
