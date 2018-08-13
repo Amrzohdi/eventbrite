@@ -13,7 +13,7 @@ require 'rails_helper'
 RSpec.describe ApplicationHelper, type: :helper do
 
   describe 'resource_name' do
-    it "should render sympol user" do
+    it "should render symbole user" do
       expect(helper.resource_name).to eq(:user)
     end
   end
