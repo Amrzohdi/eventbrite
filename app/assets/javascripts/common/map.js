@@ -4,6 +4,7 @@ $(function () {
 
     $('.map').each(function (_, el) {
         drawGoogleMap(el);
+
     });
 
 

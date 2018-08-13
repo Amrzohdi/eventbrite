@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGKDb5mvb1VsbSy0sxHuCl4iH1_nlyZmI"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Eventbrite</title>
-    <%= csrf_meta_tags %>
+<head>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGKDb5mvb1VsbSy0sxHuCl4iH1_nlyZmI"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>Eventbrite</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Eventbrite</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <input type="text" placeholder="Email" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Password" class="form-control">
-          </div>
-          <button type="submit" class="btn btn-success">Sign in</button>
-        </form>
-      </div>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/events">Eventbrite</a>
     </div>
-  </nav>
 
-    <%= yield %>
-  </body>
+    <div id="navbar" class="navbar-collapse collapse">
+
+      <% if user_signed_in? %>
+        <li>
+
+          <form class="navbar-form navbar-right">
+
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-success") %>
+          </form>
+        </li>
+      <% else %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "navbar-form navbar-right"}) do |f| %>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          </div>
+          <%= f.submit "Log in", class: 'btn btn-success' %>
+          <%= link_to "Sign up", new_registration_path(resource_name), class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+
+
+    </div>
+
+  </div>
+</nav>
+
+<%= yield %>
+</body>
 </html>
 
 

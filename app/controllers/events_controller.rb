@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy, :estimate_cost]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
+
   include UberConcern
 
   # GET /events
@@ -25,9 +26,9 @@ class EventsController < ApplicationController
 
   def estimate_cost
     begin
-      render json: uber_estimate_cost
+      render json: uber_estimate_cost(params['st_lat'], params['st_lng'], @event.venue.latitude, @event.venue.longitude)
     rescue RestClient::Exception => err
-      render json: JSON.parse(err.response)['message'], status: 400
+      render json: JSON.parse(err.response)['message'], status: :unprocessable_entity
     end
   end
 
@@ -37,7 +38,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params.merge(user: current_user))
     respond_to do |format|
       if @event.save
-        format.json {render :show, status: :created, location: @event}
+        format.html {redirect_to @event}
       else
         format.html {render :new}
         format.json {render json: @event.errors, status: :unprocessable_entity}
@@ -53,7 +54,7 @@ class EventsController < ApplicationController
         format.html {redirect_to @event, notice: 'Event was successfully updated.'}
         format.json {render :show, status: :ok, location: @event}
       else
-        format.html {render :edit}
+        format.html {render :edit, status: :unprocessable_entity}
         format.json {render json: @event.errors, status: :unprocessable_entity}
       end
     end
@@ -77,10 +78,10 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:name, :start_date, :end_date, :description, :price).merge(vanue_attributes: vanue_params)
+    params.require(:event).permit(:name, :start_date, :end_date, :description, :price).merge(venue_attributes: venue_params)
   end
 
-  def vanue_params
-    params.require(:vanue).permit(:name, :longitude, :latitude)
+  def venue_params
+    params.require(:venue).permit(:id, :name, :longitude, :latitude)
   end
 end
